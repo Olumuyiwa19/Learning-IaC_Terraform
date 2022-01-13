@@ -5,6 +5,11 @@ provider "aws" {
   region = var.region
 }
 
+module "networking" {
+  source   = "./networking"
+  vpc_cidr = "10.124.0.0/16"
+}
+
 #1 -this will create a S3 bucket in AWS
 resource "aws_s3_bucket" "terraform_state_s3" {
   #make sure you give unique bucket name
